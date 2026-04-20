@@ -1,0 +1,65 @@
+{
+    "name": "illuma-law/laravel-semantic-deduper",
+    "description": "Blazing-fast, generic semantic deduplication for Laravel collections and arrays.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "IllumaLaw\\SemanticDeduper\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "IllumaLaw\\SemanticDeduper\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "illuma-law",
+            "email": "support@illuma.law",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/support": "^11.0|^12.0|^13.0",
+        "illuminate/contracts": "^11.0|^12.0|^13.0",
+        "illuminate/database": "^11.0|^12.0|^13.0",
+        "spatie/laravel-package-tools": "^1.16"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.14",
+        "nunomaduro/collision": "^8.8",
+        "orchestra/testbench": "^11.1.0",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-arch": "^4.0",
+        "pestphp/pest-plugin-laravel": "^4.0",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "spatie/laravel-ray": "^1.35"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "IllumaLaw\\SemanticDeduper\\SemanticDeduperServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "analyse": "vendor/bin/phpstan analyse",
+        "format": "vendor/bin/pint"
+    }
+}
