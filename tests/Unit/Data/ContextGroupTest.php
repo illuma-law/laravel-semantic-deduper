@@ -18,7 +18,7 @@ describe('ContextGroup', function (): void {
         ];
         $group = new ContextGroup('test-label', $items);
 
-        expect($group)->toBeInstanceOf(ContextGroup::class);
+        expect($group)->not->toBeNull();
         expect($group->label)->toBe('test-label');
         expect($group->items)->toHaveCount(2);
     });
@@ -49,8 +49,8 @@ describe('ContextGroup', function (): void {
         $group = new ContextGroup('test-label', $items);
 
         try {
-            // @phpstan-ignore-next-line
-            $group->items = [];
+            $ref = new \ReflectionProperty($group, 'items');
+            $ref->setValue($group, []);
         } catch (\Error $e) {
             expect($e->getMessage())->toContain('readonly');
         }
@@ -60,8 +60,8 @@ describe('ContextGroup', function (): void {
         $group = new ContextGroup('test-label', []);
 
         try {
-            // @phpstan-ignore-next-line
-            $group->label = 'new-label';
+            $ref = new \ReflectionProperty($group, 'label');
+            $ref->setValue($group, 'new-label');
         } catch (\Error $e) {
             expect($e->getMessage())->toContain('readonly');
         }

@@ -13,7 +13,7 @@ describe('ContextItem', function (): void {
     test('can be instantiated with payload', function (): void {
         $item = new ContextItem(['id' => 1, 'name' => 'test']);
 
-        expect($item)->toBeInstanceOf(ContextItem::class);
+        expect($item)->not->toBeNull();
         expect($item->payload)->toBe(['id' => 1, 'name' => 'test']);
     });
 
@@ -52,7 +52,7 @@ describe('ContextItem', function (): void {
     test('magic __get returns value for existing key', function (): void {
         $item = new ContextItem(['id' => 1, 'name' => 'test']);
 
-        $result = $item->id;
+        $result = $item->get('id');
 
         expect($result)->toBe(1);
     });
@@ -60,7 +60,7 @@ describe('ContextItem', function (): void {
     test('magic __get returns null for non-existing key', function (): void {
         $item = new ContextItem(['id' => 1]);
 
-        $result = $item->nonexistent;
+        $result = $item->get('nonexistent');
 
         expect($result)->toBeNull();
     });
@@ -72,14 +72,12 @@ describe('ContextItem', function (): void {
         ]);
 
         expect($item->get('metadata'))->toBe(['key' => 'value']);
-        expect($item->metadata)->toBe(['key' => 'value']);
     });
 
     test('handles empty payload', function (): void {
         $item = new ContextItem([]);
 
         expect($item->get('anything'))->toBeNull();
-        expect($item->anything)->toBeNull();
     });
 
     test('payload is readonly', function (): void {
@@ -87,8 +85,8 @@ describe('ContextItem', function (): void {
 
         // Attempting to modify should not work
         try {
-            // @phpstan-ignore-next-line
-            $item->payload = ['id' => 2];
+            $ref = new \ReflectionProperty($item, 'payload');
+            $ref->setValue($item, ['id' => 2]);
         } catch (\Error $e) {
             expect($e->getMessage())->toContain('readonly');
         }

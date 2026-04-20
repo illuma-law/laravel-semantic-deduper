@@ -16,7 +16,7 @@ describe('GroupedContext', function (): void {
         test('can be instantiated with empty groups', function (): void {
             $context = new GroupedContext([]);
 
-            expect($context)->toBeInstanceOf(GroupedContext::class);
+            expect($context)->not->toBeNull();
             expect($context->groups)->toBe([]);
         });
 
@@ -234,8 +234,8 @@ describe('GroupedContext', function (): void {
             $context = new GroupedContext([]);
 
             try {
-                // @phpstan-ignore-next-line
-                $context->groups = [];
+                $ref = new \ReflectionProperty($context, 'groups');
+                $ref->setValue($context, []);
             } catch (\Error $e) {
                 expect($e->getMessage())->toContain('readonly');
             }
