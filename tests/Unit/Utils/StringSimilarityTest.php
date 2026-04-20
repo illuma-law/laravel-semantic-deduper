@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use IllumaLaw\SemanticDeduper\Utils\StringSimilarity;
 
 test('it calculates similarity score correctly', function () {

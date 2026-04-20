@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace IllumaLaw\SemanticDeduper\Tests;
 
-use Illuminate\Foundation\Application;
 use IllumaLaw\SemanticDeduper\SemanticDeduperServiceProvider;
+use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra

@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace IllumaLaw\SemanticDeduper\Tests\Unit;
 
-use Illuminate\Support\Collection;
-use IllumaLaw\SemanticDeduper\Data\ContextItem;
-use IllumaLaw\SemanticDeduper\Data\GroupedContext;
+use IllumaLaw\SemanticDeduper\Data\ContextGroup;
 use IllumaLaw\SemanticDeduper\SemanticClusterer;
 use IllumaLaw\SemanticDeduper\Tests\TestCase;
+use Illuminate\Support\Collection;
 
 uses(TestCase::class);
 
@@ -197,14 +196,14 @@ describe('SemanticClusterer', function (): void {
             expect($grouped->groups)->toHaveCount(2);
 
             $groupA = collect($grouped->groups)->firstWhere('label', 'A');
-            if ($groupA instanceof \IllumaLaw\SemanticDeduper\Data\ContextGroup) {
+            if ($groupA instanceof ContextGroup) {
                 expect($groupA->items)->toHaveCount(2);
                 expect($groupA->items[0]->get('id'))->toBe(1);
                 expect($groupA->items[1]->get('id'))->toBe(3);
             }
 
             $groupB = collect($grouped->groups)->firstWhere('label', 'B');
-            if ($groupB instanceof \IllumaLaw\SemanticDeduper\Data\ContextGroup) {
+            if ($groupB instanceof ContextGroup) {
                 expect($groupB->items)->toHaveCount(2);
                 expect($groupB->items[0]->get('id'))->toBe(4);
                 expect($groupB->items[1]->get('id'))->toBe(5);

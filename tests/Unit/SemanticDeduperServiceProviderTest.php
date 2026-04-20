@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace IllumaLaw\SemanticDeduper\Tests\Unit;
 
-use Illuminate\Filesystem\Filesystem;
 use IllumaLaw\SemanticDeduper\SemanticClusterer;
+use IllumaLaw\SemanticDeduper\SemanticDeduperServiceProvider;
 use IllumaLaw\SemanticDeduper\Tests\TestCase;
 
 uses(TestCase::class);
 
 describe('SemanticDeduperServiceProvider', function (): void {
     test('service provider is registered', function (): void {
-        $provider = app()->getProvider(\IllumaLaw\SemanticDeduper\SemanticDeduperServiceProvider::class);
+        $provider = app()->getProvider(SemanticDeduperServiceProvider::class);
 
         expect($provider)->not->toBeNull();
     });

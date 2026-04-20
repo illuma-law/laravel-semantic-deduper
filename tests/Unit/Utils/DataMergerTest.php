@@ -1,17 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 use IllumaLaw\SemanticDeduper\Utils\DataMerger;
 
 test('it merges arrays deeply', function () {
     $canonical = [
         'name' => 'John',
         'meta' => ['age' => 30],
-        'tags' => ['a', 'b']
+        'tags' => ['a', 'b'],
     ];
     $duplicate = [
         'name' => 'Jon',
         'meta' => ['city' => 'NY'],
-        'tags' => ['c']
+        'tags' => ['c'],
     ];
 
     $merged = DataMerger::deepMerge($canonical, $duplicate);
