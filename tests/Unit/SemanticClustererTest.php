@@ -114,7 +114,6 @@ describe('SemanticClusterer', function (): void {
 
             $clusterer = new SemanticClusterer;
 
-            // Test by observing behavior in cluster
             $results = [
                 ['id' => 1, 'source' => 'A', 'embedding' => [1.0, 0.0]],
                 ['id' => 2, 'source' => 'A', 'embedding' => [0.0, 1.0]],
@@ -350,7 +349,6 @@ describe('SemanticClusterer', function (): void {
 
             $grouped = $clusterer->cluster($results);
 
-            // Should deduplicate based on 'vector' key
             expect($grouped->groups[0]->items)->toHaveCount(2);
         });
 
@@ -361,7 +359,7 @@ describe('SemanticClusterer', function (): void {
 
             $results = [
                 ['id' => 1, 'source' => 'A', 'embedding' => [1.0, 0.0]],
-                ['id' => 2, 'source' => 'A', 'embedding' => [1.0, 0.0]], // Exact duplicate
+                ['id' => 2, 'source' => 'A', 'embedding' => [1.0, 0.0]],
             ];
 
             $grouped = $clusterer->cluster($results);
@@ -396,7 +394,7 @@ describe('SemanticClusterer', function (): void {
 
             $results = [
                 ['id' => 1, 'source' => 'A', 'embedding' => [1.0, 0.0]],
-                ['id' => 2, 'source' => 'A', 'embedding' => [1.0, 0.0]], // Duplicate, removed
+                ['id' => 2, 'source' => 'A', 'embedding' => [1.0, 0.0]],
             ];
 
             $grouped = $clusterer->cluster($results);
@@ -412,8 +410,8 @@ describe('SemanticClusterer', function (): void {
 
             $results = [
                 ['id' => 1, 'source' => 'A', 'embedding' => [1.0, 0.0]],
-                ['id' => 2, 'source' => 'A'], // No embedding
-                ['id' => 3, 'source' => 'A', 'embedding' => [0.99, 0.01]], // Near duplicate of id 1
+                ['id' => 2, 'source' => 'A'],
+                ['id' => 3, 'source' => 'A', 'embedding' => [0.99, 0.01]],
             ];
 
             $grouped = $clusterer->cluster($results);

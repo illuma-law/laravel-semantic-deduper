@@ -9,8 +9,6 @@ use Illuminate\Support\Str;
 final class TextChunker
 {
     /**
-     * Chunk text into smaller segments with optional overlap.
-     *
      * @param  string  $text  The text to chunk.
      * @param  int  $chunkSize  Maximum character length of each chunk.
      * @param  int  $overlap  Number of overlapping characters between chunks.

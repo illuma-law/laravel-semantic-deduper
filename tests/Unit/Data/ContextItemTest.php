@@ -67,7 +67,7 @@ describe('ContextItem', function (): void {
 
     test('handles nested array payload', function (): void {
         $item = new ContextItem([
-            'id' => 1,
+            'id'       => 1,
             'metadata' => ['key' => 'value'],
         ]);
 
@@ -83,7 +83,6 @@ describe('ContextItem', function (): void {
     test('payload is readonly', function (): void {
         $item = new ContextItem(['id' => 1]);
 
-        // Attempting to modify should not work
         try {
             $ref = new \ReflectionProperty($item, 'payload');
             $ref->setValue($item, ['id' => 2]);

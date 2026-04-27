@@ -47,17 +47,11 @@ final class SemanticClusterer
         return new self($maxPerGroup, $maxTotal, $threshold);
     }
 
-    /**
-     * Convert a vector distance (e.g. from pgvector) to a similarity score (0–1).
-     */
     public static function distanceToSimilarity(float $distance): float
     {
         return max(0.0, 1.0 - $distance);
     }
 
-    /**
-     * Convert a similarity score (0–1) to a vector distance.
-     */
     public static function similarityToDistance(float $similarity): float
     {
         return max(0.0, 1.0 - $similarity);

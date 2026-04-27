@@ -49,7 +49,6 @@ describe('GroupedContext', function (): void {
             $groups = [new ContextGroup('group-1', [])];
             $context = new GroupedContext($groups);
 
-            // The group exists even if it has no items
             expect($context->isEmpty())->toBeFalse();
         });
     });
@@ -134,7 +133,7 @@ describe('GroupedContext', function (): void {
             $context = new GroupedContext([
                 new ContextGroup('group-1', [
                     new ContextItem(['id' => 1]),
-                    new ContextItem(['id' => 1]), // Duplicate
+                    new ContextItem(['id' => 1]),
                 ]),
             ]);
 
@@ -160,7 +159,7 @@ describe('GroupedContext', function (): void {
             $context = new GroupedContext([
                 new ContextGroup('group-1', [
                     new ContextItem(['id' => 1]),
-                    new ContextItem(['name' => 'test']), // No 'id' key
+                    new ContextItem(['name' => 'test']),
                 ]),
             ]);
 

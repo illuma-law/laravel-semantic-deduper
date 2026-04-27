@@ -7,8 +7,6 @@ namespace IllumaLaw\SemanticDeduper\Utils;
 final class StringSimilarity
 {
     /**
-     * Calculate the similarity percentage between two strings using similar_text.
-     *
      * @return float Similarity percentage (0–100).
      */
     public static function score(string $a, string $b): float
@@ -27,8 +25,6 @@ final class StringSimilarity
     }
 
     /**
-     * Calculate the Levenshtein distance similarity percentage between two strings.
-     *
      * @return float Similarity percentage (0–100).
      */
     public static function levenshteinScore(string $a, string $b): float

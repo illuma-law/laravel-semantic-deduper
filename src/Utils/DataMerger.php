@@ -7,8 +7,6 @@ namespace IllumaLaw\SemanticDeduper\Utils;
 final class DataMerger
 {
     /**
-     * Recursively merge two arrays, preferring values from the canonical array.
-     *
      * @param  array<string, mixed>  $canonical
      * @param  array<string, mixed>  $duplicate
      * @return array<string, mixed>
@@ -33,9 +31,6 @@ final class DataMerger
     }
 
     /**
-     * Identify which fields from a duplicate can be absorbed into a canonical record.
-     * Only absorbs if the canonical field is "blank" and the duplicate field is "filled".
-     *
      * @param  array<string, mixed>  $canonical
      * @param  array<string, mixed>  $duplicate
      * @param  array<int, string>  $fields
@@ -57,9 +52,6 @@ final class DataMerger
         return $updates;
     }
 
-    /**
-     * Internal helper to check if a value is blank (matches Laravel's blank()).
-     */
     private static function isBlank(mixed $value): bool
     {
         if (is_null($value)) {

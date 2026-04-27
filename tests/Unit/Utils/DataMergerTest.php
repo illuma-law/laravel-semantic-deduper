@@ -18,10 +18,10 @@ test('it merges arrays deeply', function () {
 
     $merged = DataMerger::deepMerge($canonical, $duplicate);
 
-    expect($merged['name'])->toBe('John'); // canonical preferred
+    expect($merged['name'])->toBe('John');
     expect($merged['meta'])->toHaveKey('age', 30);
     expect($merged['meta'])->toHaveKey('city', 'NY');
-    expect($merged['tags'])->toBe(['a', 'b']); // non-recursive overwrite by canonical
+    expect($merged['tags'])->toBe(['a', 'b']);
 });
 
 test('it identifies absorbable updates', function () {
@@ -33,5 +33,5 @@ test('it identifies absorbable updates', function () {
     expect($updates)->toHaveCount(2);
     expect($updates)->toHaveKey('email', 'john@example.com');
     expect($updates)->toHaveKey('phone', '123');
-    expect($updates)->not->toHaveKey('name'); // already filled in canonical
+    expect($updates)->not->toHaveKey('name');
 });

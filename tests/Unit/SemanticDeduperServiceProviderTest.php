@@ -43,7 +43,6 @@ describe('SemanticDeduperServiceProvider', function (): void {
 
         $clusterer = new SemanticClusterer;
 
-        // Test that config values are used by checking behavior
         $results = [
             ['id' => 1, 'source' => 'A', 'embedding' => [1.0, 0.0]],
             ['id' => 2, 'source' => 'A', 'embedding' => [0.0, 1.0]],
