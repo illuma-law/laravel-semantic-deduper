@@ -67,7 +67,7 @@ describe('ContextItem', function (): void {
 
     test('handles nested array payload', function (): void {
         $item = new ContextItem([
-            'id'       => 1,
+            'id' => 1,
             'metadata' => ['key' => 'value'],
         ]);
 
